@@ -9,12 +9,17 @@ from models import Resume
 
 
 def download_file(resume: Resume):
-    response = requests.get(resume.submitted_pdf_url)
-    filename = 'resume.pdf'
-    file = open(filename, "wb")
-    file.write(response.content)
-    file.close()
-    return file
+    filename = "resume.pdf"
+    is_file = os.path.isfile(filename)
+    if is_file:
+        os.remove(filename)
+    if resume.submitted_pdf_url :
+        response = requests.get(resume.submitted_pdf_url)
+        file = open(filename, "wb")
+        file.write(response.content)
+        file.close()
+        return file
+    return None
 
 
 def resume_parser(file):
