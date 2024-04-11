@@ -1,0 +1,1 @@
+OPENAI_TOKEN="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"
