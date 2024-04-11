@@ -41,7 +41,7 @@ def gpt_task_executor(prompt_body: str, agent_task: str):
 
     gpt_query.PROMPT = prompt_body
     gpt_query.generate()
-    print(gpt_query.get_result())
+    #print(gpt_query.get_result())
     return gpt_query.get_result()
 
 

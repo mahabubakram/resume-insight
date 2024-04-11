@@ -1,3 +1,5 @@
+import logging
+
 from psycopg2 import OperationalError
 from sqlalchemy.orm import Session
 from supabase import Client, create_client

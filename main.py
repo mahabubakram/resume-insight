@@ -14,10 +14,10 @@ from tasks import insight_task
 app = FastAPI()
 
 app.add_middleware(DBSessionMiddleware, db_url=database.SQLALCHEMY_DATABASE_URL)
-
 models.Base.metadata.create_all(bind=database.engine)
 
 local_logger = get_logger(__name__)
+
 
 @app.get("/")
 async def root():

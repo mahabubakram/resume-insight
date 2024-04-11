@@ -1,7 +1,7 @@
 import logging
 
 
-def get_logger(name, level=logging.DEBUG) -> logging.Logger:
+def get_logger(name, level=logging.INFO) -> logging.Logger:
     logger = logging.getLogger(name)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
