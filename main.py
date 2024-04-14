@@ -8,7 +8,7 @@ import models
 from logger import get_logger
 from tasks import insight_task
 
-app = FastAPI()
+app = FastAPI(swagger_ui_parameters={"syntaxHighlight.theme": "obsidian"})
 
 app.add_middleware(DBSessionMiddleware, db_url=database.SQLALCHEMY_DATABASE_URL)
 models.Base.metadata.create_all(bind=database.engine)
