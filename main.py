@@ -1,10 +1,7 @@
-import logging
-import sys
 
 from fastapi import FastAPI, Depends
 from fastapi_sqlalchemy import DBSessionMiddleware
 from fastapi_utilities import repeat_every
-from supabase import Client, create_client
 
 import database
 import models

@@ -1,5 +1,5 @@
 import logging
-
+#https://prometheus.io/docs/introduction/faq/#how-to-feed-logs-into-prometheus
 
 def get_logger(name, level=logging.INFO) -> logging.Logger:
     logger = logging.getLogger(name)
