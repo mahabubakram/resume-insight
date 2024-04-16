@@ -15,10 +15,11 @@ def download_file(resume: Resume):
         os.remove(filename)
     if resume.submitted_pdf_url :
         response = requests.get(resume.submitted_pdf_url)
-        file = open(filename, "wb")
-        file.write(response.content)
-        file.close()
-        return file
+        if response.status_code == 200:
+            file = open(filename, "wb")
+            file.write(response.content)
+            file.close()
+            return file
     return None
 
 

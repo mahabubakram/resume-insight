@@ -29,7 +29,7 @@ def insight_task(db: Session):
 
             resume.parsed_resume = json.loads(parsed_resume)
             resume.is_valid_resume = is_resume(parsed_resume)
-        if resume.is_valid_resume:
+        if (file_response is not None)  and resume.is_valid_resume:
             resume.resume_insight = json.loads(gpt_resume_insight(parsed_resume))
 
         local_logger.info("Resume Infos --- Id: {0}, Email: {1}, Is_it_a_Valid_Resume: {2}"
