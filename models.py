@@ -21,3 +21,24 @@ class Resume(Base):
 
     def __str__(self):
         return self.uploaded_on.date()
+
+
+class Variant(Base):
+    __tablename__ = 'copilot_api_resume_variants'
+    id = Column(Integer, primary_key=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    suggested_insight = Column(JSON)
+    target_job_title = Column(String)
+    target_job_description = Column(String)
+    detected_gaps = Column(JSON)
+    user_id = Column(Integer)
+    email = Column(String)
+    based_on_variant_id = Column(Integer)
+    confirmed_insight = Column(JSON)
+    title = Column(String)
+    base_insight = Column(JSON)
+    job_insight = Column(JSON)
+    gap_on_suggested_and_base = Column(JSON)
+
+    def __str__(self):
+        return self.created_at.date()

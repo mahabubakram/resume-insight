@@ -5,6 +5,8 @@ from fastapi_utilities import repeat_every
 
 import database
 import models
+from business.variant import save_variant
+from function.call import function_call
 from logger import get_logger
 from tasks import insight_task
 
@@ -47,6 +49,13 @@ async def run_resume_insight_task(commons: dict = Depends(get_api_key)):
     insight_task(db)
     local_logger.info("End Parsing")
     return {"message": "ran the task of resume insight generation"}
+
+
+@app.get("/update-variant")
+async def update_variant():
+    db = database.SessionLocal()
+    save_variant(db)
+    return {"message": "variant updated"}
 
 # @app.on_event("startup")
 # @repeat_every(seconds=300)

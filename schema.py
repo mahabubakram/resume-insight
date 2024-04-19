@@ -1,7 +1,7 @@
 # build a schema using pydantic
 import json
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 
 
 class Resume(BaseModel):
@@ -19,3 +19,20 @@ class Resume(BaseModel):
     class Config:
         orm_mode = True
 
+
+class Variant(BaseModel):
+    suggested_insight: json
+    target_job_title: str
+    target_job_title: str
+    detected_gaps: json
+    user_id: int
+    email: str
+    based_on_variant_id: int
+    confirmed_insight: json
+    title: str
+    base_insight: json
+    job_insight: json
+    gap_on_suggested_and_base: json
+
+    class Config:
+        orm_mode = True
