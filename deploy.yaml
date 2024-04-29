@@ -1,0 +1,34 @@
+name: Basic deploy
+on:
+  push:
+    branches:
+      - main
+      # temporary
+      - deploy-to-ec2
+
+jobs:
+  EC2-Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - id: deploy
+        # unfortunately this action doesn't provide a way to connect to an existing 
+        # EC2 - see https://github.com/bitovi/github-actions-deploy-docker-to-ec2/issues/146
+        # I just create this file to provide a sample deployment but without an actual working action, a custom
+        # one needs to be created - never done that.
+        uses: bitovi/github-actions-deploy-docker-to-ec2@v1.0.1
+        with:
+          # the ec2 already contains everything
+          aws_ec2_instance_create: false
+          aws_vpc_create: false
+          aws_r53_enable: false
+          aws_elb_create: false
+          aws_efs_create: false
+          aws_rds_db_enable: false
+
+          docker_install: false
+          # don't remove volumes
+          docker_full_cleanup: false
+
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_default_region: eu-west-1
